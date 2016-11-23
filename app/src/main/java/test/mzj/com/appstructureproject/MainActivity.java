@@ -20,7 +20,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void doGet() {
-        OkHttpManager.getAsyn("https://www.baidu.com", new OkHttpManager.ResultCallback<String>() {
+        String url = "https://www.baidu.com";
+        OkHttpManager.getAsyn(url, new OkHttpManager.ResultCallback<String>() {
             @Override
             public void onError(Request request, Exception e) {
                 e.printStackTrace();
@@ -55,9 +56,8 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private void downLoadFile() {
-        OkHttpManager.downloadAsyn(
-                "http://192.168.1.103:8080/okHttpServer/files/messenger_01.png",
+    private void downLoadFile(String downLoadUrl) {
+        OkHttpManager.downloadAsyn(downLoadUrl,
                 Environment.getExternalStorageDirectory().getAbsolutePath(),
                 new OkHttpManager.ResultCallback<String>() {
                     @Override
