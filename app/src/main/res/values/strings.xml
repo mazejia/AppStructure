@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AppStructureProject</string>
+    <string name="header_hint_refresh_normal">下拉刷新</string>
+    <string name="header_hint_refresh_ready">释放即可刷新</string>
+    <string name="header_hint_refresh_loading">正在刷新&#8230;</string>
+    <string name="header_hint_refresh_normal_more_match">下拉显示更多比赛</string>
+    <string name="header_hint_refresh_ready_more_match">释放显示更多比赛</string>
+    <string name="footer_hint_load_normal">加载更多</string>
+    <string name="footer_hint_load_ready">释放即可加载更多</string>
+</resources>
