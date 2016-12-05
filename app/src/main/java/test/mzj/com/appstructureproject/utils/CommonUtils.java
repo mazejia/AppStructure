@@ -15,9 +15,13 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import android.view.View;
 import android.view.WindowManager;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Iterator;
@@ -556,5 +560,83 @@ public class CommonUtils {
         return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
     }
 
+    /**
+     * 收起状态栏
+     * 用途：可用于点击Notifacation之后收起状态栏
+     * @param ctx
+     */
+    public static final void collapseStatusBar(Context ctx){
+        Object sbservice = ctx.getSystemService("statusbar");
+        try {
+            Class<?> statusBarManager = Class.forName("android.app.StatusBarManager");
+            Method collapse;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                collapse = statusBarManager.getMethod("collapsePanels");
+            } else {
+                collapse = statusBarManager.getMethod("collapse");
+            }
+            collapse.invoke(sbservice);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 展开状态栏
+     * @param ctx
+     */
+    public static final void expandStatusBar(Context ctx) {
+        Object sbservice = ctx.getSystemService("statusbar");
+        try {
+            Class<?> statusBarManager = Class.forName("android.app.StatusBarManager");
+            Method expand;
+            if (Build.VERSION.SDK_INT >= 17) {
+                expand = statusBarManager.getMethod("expandNotificationsPanel");
+            } else {
+                expand = statusBarManager.getMethod("expand");
+            }
+            expand.invoke(sbservice);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int getStatusBarHeight(Context context){
+        Class<?> c = null;
+        Object obj = null;
+        Field field = null;
+        int x = 0, statusBarHeight = 0;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            statusBarHeight = context.getResources().getDimensionPixelSize(x);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return statusBarHeight;
+    }
+
+    /**
+     * ListView使用ViewHolder极简写法
+     * @param convertView
+     * @param id
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T getAdapterView(View convertView, int id) {
+        SparseArray<View> viewHolder = (SparseArray<View>) convertView.getTag();
+        if (viewHolder == null) {
+            viewHolder = new SparseArray<View>();
+            convertView.setTag(viewHolder);
+        }
+        View childView = viewHolder.get(id);
+        if (childView == null) {
+            childView = convertView.findViewById(id);
+            viewHolder.put(id, childView);
+        }
+        return (T) childView;
+    }
 
 }
