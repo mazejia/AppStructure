@@ -2,6 +2,9 @@ package test.mzj.com.appstructureproject.activity;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.squareup.okhttp.Request;
 
@@ -10,13 +13,23 @@ import java.io.IOException;
 
 import test.mzj.com.appstructureproject.R;
 import test.mzj.com.appstructureproject.okhttp.OkHttpManager;
+import test.mzj.com.appstructureproject.valueanimator.ValueAnimatorUtil;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener{
+    private TextView mTextView;
+    private Button mResetBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+    }
+
+    private void initView(){
+        mTextView = (TextView) findViewById(R.id.textview_test);
+        mResetBtn = (Button) findViewById(R.id.button_reset);
+        mResetBtn.setOnClickListener(this);
     }
 
     private void doGet() {
@@ -69,5 +82,24 @@ public class MainActivity extends BaseActivity {
                         //文件下载成功，这里回调的reponse为文件的absolutePath
                     }
                 });
+    }
+
+    private void intoFunction(){
+//        ValueAnimatorUtil.setAlphaAnimation(mTextView);
+//        ValueAnimatorUtil.setRotateAnimation(mTextView);
+//        ValueAnimatorUtil.setScaleYAnimation(mTextView);
+//        ValueAnimatorUtil.setTranslationXAnimation(mTextView);
+
+        ValueAnimatorUtil.setSetAnimation(mTextView);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_reset:
+                intoFunction();
+            break;
+        }
     }
 }

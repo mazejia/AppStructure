@@ -11,7 +11,17 @@
     tools:context="test.mzj.com.appstructureproject.MainActivity">
 
     <TextView
+        android:id="@+id/textview_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:padding="10dp"
         android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:text="Reset" />
 </RelativeLayout>
