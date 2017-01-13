@@ -639,4 +639,29 @@ public class CommonUtils {
         return (T) childView;
     }
 
+    /**
+     * 判断手机是否root
+     * @return
+     */
+    public boolean isRoot(){
+        boolean rootFlag = false;
+        try {
+            rootFlag = new File("/system/bin/su").exists() || new File("/system/xbin/su").exists();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rootFlag;
+    }
+
+    /**
+     * 将10进制颜色值转换成16进制。
+     */
+    private String getHexString(int value) {
+        String hexString = Integer.toHexString(value);
+        if (hexString.length() == 1) {
+            hexString = "0" + hexString;
+        }
+        return hexString;
+    }
+
 }
