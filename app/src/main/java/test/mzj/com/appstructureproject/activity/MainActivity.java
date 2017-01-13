@@ -1,4 +1,4 @@
-package test.mzj.com.appstructureproject;
+package test.mzj.com.appstructureproject.activity;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -8,7 +8,7 @@ import com.squareup.okhttp.Request;
 import java.io.File;
 import java.io.IOException;
 
-import test.mzj.com.appstructureproject.activity.BaseActivity;
+import test.mzj.com.appstructureproject.R;
 import test.mzj.com.appstructureproject.okhttp.OkHttpManager;
 
 public class MainActivity extends BaseActivity {
