@@ -328,4 +328,10 @@
         </attr>
     </declare-styleable>
 
+
+    <declare-styleable name="MiddleTextView">
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
 </resources>
