@@ -34,7 +34,11 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".activity.TestActivity"
+        <activity android:name=".activity.MiddleTextActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.HorizontalViewActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

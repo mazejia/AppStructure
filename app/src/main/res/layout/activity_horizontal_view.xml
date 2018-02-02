@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <test.mzj.com.appstructureproject.view.HorizontalView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+        <ListView
+            android:id="@+id/lv_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </test.mzj.com.appstructureproject.view.HorizontalView>
+
+</RelativeLayout>

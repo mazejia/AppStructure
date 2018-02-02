@@ -10,12 +10,12 @@ import test.mzj.com.appstructureproject.R;
  * Created by Administrator on 2018/1/31 0031.
  */
 
-public class TestActivity extends Activity {
+public class MiddleTextActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_middle_text);
     }
 
     @Override
